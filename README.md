@@ -9,6 +9,8 @@ phpinfo.php     检查php环境
 
 3.执行redis_order.php     执行秒杀操作
 
+4. Win10 使用ab测试 【进入bin目录】  ab -n 500 -c 100 http://demo.com/git-php-redis/redis_order.php
+
 ```
 
 ##lpush
@@ -31,7 +33,7 @@ row value
 -------------
 
 ````
-##lpop  抛出
+## lpop  抛出
 
 ````php
 $res = $redis->lpop('demo_goods_store');
@@ -43,7 +45,7 @@ row value
 -------------
 会输出：当前抛出的值
 ````
-##llen  当面key存在的数量
+## llen  当面key存在的数量
 ```php
 $redis->llen('order_init');
 

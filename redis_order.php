@@ -17,7 +17,7 @@ function ip(){
 }
 //产生订单信息
 function order(){
-    return ['no'=>time().uniqid(),'buy_num'=>1,'sts'=>'0','msg'=>'抢购失败'];
+    return ['no'=>time().uniqid(),'buy_num'=>1,'status'=>'0','msg'=>'抢购失败'];
 }
 
 //______________________________________________________________________________
@@ -27,14 +27,14 @@ $order = order();
 $redis->lpush('order_init',json_encode($order));
 
 //list pop操作，原子性，依次抛出
-$res = $redis->lpop('goods_store');
+$res = $redis->lpop('demo_goods_store');
 if(!$res){
     wlog('goods_store sail not!!!'.ip());
     echo 400;
     exit();
 }
 //抢购成功，更改订单状态
-$order['sts']='1';
+$order['status']='1';
 $order['msg']='抢购成功';
 //保存成功操作，并且可以在这针对数据库的减操作
 $redis->lpush('order_success',json_encode($order));

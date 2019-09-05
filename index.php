@@ -14,7 +14,7 @@ echo '<table><tr><th>订单号</th><th>状态</th></tr>';
 for($i=0;$i<$order_init;$i++){
     $_tmpRs = $redis->lget('order_init',$i);
     $_tmpRs = json_decode($_tmpRs,true);
-    echo "<tr><td>{$_tmpRs['id']}</td><td>{$_tmpRs['msg']}</td></tr>";
+    echo "<tr><td>{$_tmpRs['no']}</td><td>{$_tmpRs['msg']}</td></tr>";
 }
 echo '</table>';
 
@@ -28,7 +28,7 @@ echo '<table><tr><th>订单号</th><th>状态</th></tr>';
 for($i=0;$i<$order_success;$i++){
     $_tmpRs = $redis->lget('order_success',$i);
     $_tmpRs = json_decode($_tmpRs,true);
-    echo "<tr><td>{$_tmpRs['id']}</td><td>{$_tmpRs['msg']}</td></tr>";
+    echo "<tr><td>{$_tmpRs['no']}</td><td>{$_tmpRs['msg']}</td></tr>";
 }
 echo '</table>';
 echo '================================================'."<br>";
